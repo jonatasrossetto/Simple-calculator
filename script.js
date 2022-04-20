@@ -22,45 +22,22 @@ let nB = 0;
 let operation = "";
 let calculateOk = false;
 
-btnAdd.addEventListener("click", function () {
-  console.log("btnAdd");
-  operation = "add";
+function pressOperation(pressedOperation){
+  console.log('btn '+pressedOperation);
+  operation = pressedOperation;
   nA = Number(visorStr);
   visorStr = "0";
   console.log(`number A: ${nA}`);
+  console.log(`number B: ${nB}`);
   console.log(`operation: ${operation}`);
   visor.textContent = visorStr;
-});
+}
+btnAdd.addEventListener("click", function () {pressOperation('add')});
+btnMultiply.addEventListener("click", function () {pressOperation('multiply')});
+btnSubtract.addEventListener("click", function () {pressOperation('subtract')});
+btnDivide.addEventListener("click", function () {pressOperation('divide')});
 
-btnMultiply.addEventListener("click", function () {
-  console.log("btnMultiply");
-  operation = "multiply";
-  nA = Number(visorStr);
-  visorStr = "0";
-  console.log(`number A: ${nA}`);
-  console.log(`operation: ${operation}`);
-  visor.textContent = visorStr;
-});
 
-btnSubtract.addEventListener("click", function () {
-  console.log("btnSubtract");
-  operation = "subtract";
-  nA = Number(visorStr);
-  visorStr = "0";
-  console.log(`number A: ${nA}`);
-  console.log(`operation: ${operation}`);
-  visor.textContent = visorStr;
-});
-
-btnDivide.addEventListener("click", function () {
-  console.log("btnDivide");
-  operation = "divide";
-  nA = Number(visorStr);
-  visorStr = "0";
-  console.log(`number A: ${nA}`);
-  console.log(`operation: ${operation}`);
-  visor.textContent = visorStr;
-});
 
 btnCalculate.addEventListener("click", function () {
   console.log("calculate");
@@ -89,127 +66,31 @@ btnCalculate.addEventListener("click", function () {
     visor.textContent = visorStr;
   }
   operation = "";
-  nA=0;
+  nA=Number(visorStr);
   nB=0;
   calculateOk=true;
 });
 
-btn1.addEventListener("click", function () {
-  console.log("btn1");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "1";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
 
-btn2.addEventListener("click", function () {
-  console.log("btn2");
+function pressNumber(digit){
+  console.log(`btn${digit}`);
   (visorStr==="0")?visorStr="":0;
   if (calculateOk===true) {
     calculateOk=false;
     visorStr=""
   }
-  visorStr = visorStr + "2";
+  visorStr = visorStr + digit;
   console.log(visorStr);
   visor.textContent = visorStr;
-});
+}
 
-btn3.addEventListener("click", function () {
-  console.log("btn3");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "3";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
-
-btn4.addEventListener("click", function () {
-  console.log("btn4");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "4";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
-
-btn5.addEventListener("click", function () {
-  console.log("btn5");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "5";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
-
-btn6.addEventListener("click", function () {
-  console.log("btn6");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "6";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
-
-btn7.addEventListener("click", function () {
-  console.log("btn7");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "7";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
-
-btn8.addEventListener("click", function () {
-  console.log("btn8");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "8";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
-
-btn9.addEventListener("click", function () {
-  console.log("btn9");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "9";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
-
-btn0.addEventListener("click", function () {
-  console.log("btn0");
-  (visorStr==="0")?visorStr="":0;
-  if (calculateOk===true) {
-    calculateOk=false;
-    visorStr=""
-  }
-  visorStr = visorStr + "0";
-  console.log(visorStr);
-  visor.textContent = visorStr;
-});
+btn1.addEventListener("click", function(){pressNumber('1')});
+btn2.addEventListener("click", function(){pressNumber('2')});
+btn3.addEventListener("click", function(){pressNumber('3')});
+btn4.addEventListener("click", function(){pressNumber('4')});
+btn5.addEventListener("click", function(){pressNumber('5')});
+btn6.addEventListener("click", function(){pressNumber('6')});
+btn7.addEventListener("click", function(){pressNumber('7')});
+btn8.addEventListener("click", function(){pressNumber('8')});
+btn9.addEventListener("click", function(){pressNumber('9')});
+btn0.addEventListener("click", function(){pressNumber('0')});
