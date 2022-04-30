@@ -1,4 +1,7 @@
 "use strict";
+let btnStatus = document.querySelector(".status");
+let btnClearAll = document.querySelector(".clearAll");
+let btnClearEntry = document.querySelector(".clearEntry");
 let btnAdd = document.querySelector(".add");
 let btnMultiply = document.querySelector(".multiply");
 let btnDivide = document.querySelector(".divide");
@@ -23,66 +26,109 @@ let operation = "";
 let calculateOk = false;
 
 function pressOperation(pressedOperation){
-  console.log('btn '+pressedOperation);
+  // console.log('btn '+pressedOperation);
   operation = pressedOperation;
-  nA = Number(visorStr);
-  visorStr = "0";
-  console.log(`number A: ${nA}`);
-  console.log(`number B: ${nB}`);
-  console.log(`operation: ${operation}`);
+  if (nA==0){ 
+    nA = Number(visorStr);
+    visorStr = "0";
+  }
+  // console.log(`number A: ${nA}`);
+  // console.log(`number B: ${nB}`);
+  // console.log(`operation: ${operation}`);
   visor.textContent = visorStr;
 }
 btnAdd.addEventListener("click", function () {pressOperation('add')});
 btnMultiply.addEventListener("click", function () {pressOperation('multiply')});
 btnSubtract.addEventListener("click", function () {pressOperation('subtract')});
 btnDivide.addEventListener("click", function () {pressOperation('divide')});
-
+btnClearAll.addEventListener("click",function(){clearAll()});
+btnClearEntry.addEventListener("click",function(){clearEntry()});
+btnStatus.addEventListener("click", function(){DisplayInternalStatus()});
 
 
 btnCalculate.addEventListener("click", function () {
-  console.log("calculate");
+  // console.log("calculate");
   nB = Number(visorStr);
-  console.log(`number A: ${nA}`);
-  console.log(`number B: ${nB}`);
-  console.log(`operation: ${operation}`);
+  // console.log(`number A: ${nA}`);
+  // console.log(`number B: ${nB}`);
+  // console.log(`operation: ${operation}`);
   if (operation==="add") {
     visorStr = nA+nB;
-    console.log(`result: ${nA+nB}`);
+    // console.log(`result: ${nA+nB}`);
     visor.textContent = visorStr;
   } 
   if (operation==="multiply") {
     visorStr = nA*nB;
-    console.log(`result: ${nA*nB}`)
+    // console.log(`result: ${nA*nB}`)
     visor.textContent = visorStr;
   }
   if (operation==="subtract") {
     visorStr = nA-nB;
-    console.log(`result: ${nA-nB}`)
+    // console.log(`result: ${nA-nB}`)
     visor.textContent = visorStr;
   }
   if (operation==="divide") {
     visorStr = nA/nB;
-    console.log(`result: ${nA/nB}`)
+    // console.log(`result: ${nA/nB}`)
     visor.textContent = visorStr;
   }
   operation = "";
   nA=Number(visorStr);
   nB=0;
   calculateOk=true;
+  // console.log(`number A: ${nA}`);
+  // console.log(`number B: ${nB}`);
+  // console.log(`operation: ${operation}`);
 });
 
 
 function pressNumber(digit){
-  console.log(`btn${digit}`);
+  // console.log(`btn${digit}`);
   (visorStr==="0")?visorStr="":0;
   if (calculateOk===true) {
     calculateOk=false;
     visorStr=""
   }
   visorStr = visorStr + digit;
-  console.log(visorStr);
+  // console.log(visorStr);
   visor.textContent = visorStr;
 }
+
+function clearAll(){
+  visorStr = "0";
+  visor.textContent = visorStr;
+  nA = 0;
+  nB = 0;
+  operation = "";
+  calculateOk = false;
+  // console.log('clearAll');
+  // console.log(`number A: ${nA}`);
+  // console.log(`number B: ${nB}`);
+  // console.log(`operation: ${operation}`);
+}
+
+function DisplayInternalStatus(){
+  console.log('Internal Status');
+  console.log(`visorStr: ${visorStr}`);
+  console.log(`number A: ${nA}`);
+  console.log(`number B: ${nB}`);
+  console.log(`operation: ${operation}`);
+  console.log(`calculateOk: ${calculateOk}`);
+}
+
+function clearEntry(){
+  
+  if (nA!=0) {
+    nB=0;
+    operation='';
+    visorStr = "0";
+    visor.textContent = visorStr;
+    return;
+  }
+  
+  clearAll();
+  }
+
 
 btn1.addEventListener("click", function(){pressNumber('1')});
 btn2.addEventListener("click", function(){pressNumber('2')});
